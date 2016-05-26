@@ -1,1 +1,28 @@
-Pseudocode1) Create dictionaries with endings (noun and verbal)Key should be the definition and value the ending2) User writes sentence (raw_input)Paulus amat Claudiam3) Save sentence in variable and split words (list of strings)[ÒPaulusÓ, ÒamatÓ, ÒClaudiamÓ]4) Ask user what he/she wants to do (menu function); compare answer with number (if ==) --> call function5a) Find subject/object/verb:Go through sentence (for loop) and compare (==) endings (access string -1:-2 or split every word and access list) with endings in dictionaries (values).If match found, print ÒIn this sentence, the subject/object/verb isÉÓIf no match found, print: none or not expressed (Special case: Plural verb --> one subject in pl. or two subjects)5b) Analyze word:- Ask user which word he/she wants to analyze- if word in list: compare ending with dictionaries- print(cfr. 5a!!!)5c) Analyze sentence (=all words in sentence): do 5a for every word (add if no match), print
+Pseudocode
+
+1) Create dictionaries with endings (noun and verbal)
+Key should be the definition and value the ending
+
+2) User writes sentence (raw_input)
+Paulus amat Claudiam
+
+3) Save sentence in variable and split words (list of strings)
+
+4) Ask user what he/she wants to do (menu function); compare answer with number (if ==) --> call function
+
+5a) Find subject/object/verb:
+Go through sentence (for loop) and compare (==) endings (access string -1:-2 or split every word and access list) with endings in dictionaries (values).
+If match found, print Ã’In this sentence, the subject/object/verb isÃ‰Ã“
+If no match found, print: none or not expressed 
+(Special case: Plural verb --> one subject in pl. or two subjects)
+
+5b) Analyze word:
+- Ask user which word he/she wants to analyze
+- if word in list: compare ending with dictionaries
+- print
+(cfr. 5a!!!)
+
+5c) Analyze sentence (=all words in sentence): do 5a for every word (add if no match), print
+
+
+

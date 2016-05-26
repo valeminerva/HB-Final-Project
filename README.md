@@ -1,6 +1,5 @@
-# HB Final Project
-
-Latin Syntax Analyzer 
+# Latin Syntax Analyzer
+## HB Final Project
 
 Analyzes Latin SOV-sentences (1st and 2nd decl., verbs in pres.)
 

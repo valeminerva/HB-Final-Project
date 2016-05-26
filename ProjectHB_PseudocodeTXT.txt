@@ -24,5 +24,14 @@ If no match found, print: none or not expressed
 
 5c) Analyze sentence (=all words in sentence): do 5a for every word (add if no match), print
 
+PROBLEM: homophone endings
+
+IN THE FUTURE:
+- add casus
+- add decl
+- add adj
+- add other tenses (impf., pf.)
+- add coordinating conjunctions (et, -que, sed)
+
 
 

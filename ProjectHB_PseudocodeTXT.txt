@@ -4,6 +4,8 @@ Pseudocode
 Create dictionaries with endings (noun and verbal)
 Key should be the definition and value the ending
 
+!!! Or better CLASSES: e.g. class noun (case, gender, numerus)
+
 2) FILE 2: SENTENCE
 User writes sentence (raw_input)
 

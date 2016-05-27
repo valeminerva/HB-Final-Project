@@ -30,7 +30,7 @@ def verb():
 # come accedo a un dictionary definito fuori della funzione?
 	for word in sentence:
 		for pers in des_pres_ind_1_conj:
-			if word[-1:-2] in des_pres_ind_1_conj:
+			if word[-2:-1] in des_pres_ind_1_conj:
 	#CHECK: 1) how to access last two idx in string 2) access value at key
 				print "The verb is %s", (word)
 			else print "In this sentence there is no verb."

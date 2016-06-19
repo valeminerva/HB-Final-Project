@@ -1,6 +1,6 @@
-"""This is a user controled program that analyzes the syntax of a regular SOV-Latin sentence including regular words from the first and second declination (only m. and f.), and verbs in presence tense."""
+"""This is a user controlled program that analyzes the syntax of a regular SOV-Latin sentence including regular words from the first and second declension (only m. and f.), and verbs in presence tense (conj 1, 2, 4)."""
 
-from dictionaries import *
+from ProjectHB_dictionaries import *
 
 def sentence():
 	user_sentence = raw_input("Please type the sentence you want to analyze.")
@@ -10,57 +10,58 @@ def sentence():
 def find_verb(splitted_sentence):
 	if find_verb_1st_conj_ind_pres(splitted_sentence) != True and find_verb_2nd_conj_ind_pres(splitted_sentence) != True and find_verb_4_conj_ind_pres(splitted_sentence) != True:
 		print "There is no verb."
+		return False
 
 def find_verb_1st_conj_ind_pres(splitted_sentence):
 	global des_ind_pres_1_conj
 	for word in splitted_sentence:
 		if word[-1] in des_ind_pres_1_conj.values() and word[-2:] != "eo" and word[-2:] != "io":
-			ending = des_ind_pres_1_conj.keys()[des_ind_pres_1_conj.values().index(word[-1])] 
-			print "The verb is %s. It is a %s, 1st conj." % (word, ending)
+			ending_definition = des_ind_pres_1_conj.keys()[des_ind_pres_1_conj.values().index(word[-1])] 
+			print "The verb is %s. It is a %s, 1st conj." % (word, ending_definition)
 			return True
 		elif word[-2:] in des_ind_pres_1_conj.values():
-			ending = des_ind_pres_1_conj.keys()[des_ind_pres_1_conj.values().index(word[-2:])] 
-			print "The verb is %s. It is a %s, 1st conj." % (word, ending)
+			ending_definition = des_ind_pres_1_conj.keys()[des_ind_pres_1_conj.values().index(word[-2:])] 
+			print "The verb is %s. It is a %s, 1st conj." % (word, ending_definition)
 			return True
 		elif word[-3:] in des_ind_pres_1_conj.values():
-			ending = des_ind_pres_1_conj.keys()[des_ind_pres_1_conj.values().index(word[-3:])] 
-			print "The verb is %s. It is a %s, 1st conj." % (word, ending)
+			ending_definition = des_ind_pres_1_conj.keys()[des_ind_pres_1_conj.values().index(word[-3:])] 
+			print "The verb is %s. It is a %s, 1st conj." % (word, ending_definition)
 			return True
 		elif word[-4:] in des_ind_pres_1_conj.values():
-			ending = des_ind_pres_1_conj.keys()[des_ind_pres_1_conj.values().index(word[-4:])] 
-			print "The verb is %s. It is a %s, 1st conj." % (word, ending)
+			ending_definition = des_ind_pres_1_conj.keys()[des_ind_pres_1_conj.values().index(word[-4:])] 
+			print "The verb is %s. It is a %s, 1st conj." % (word, ending_definition)
 			return True
 
 def find_verb_2nd_conj_ind_pres(splitted_sentence):
 	global des_ind_pres_2_conj
 	for word in splitted_sentence:
 		if 	word[-2:] in des_ind_pres_2_conj.values():
-			ending = des_ind_pres_2_conj.keys()[des_ind_pres_2_conj.values().index(word[-2:])] 
-			print "The verb is %s. It is a %s." % (word, ending)
+			ending_definition = des_ind_pres_2_conj.keys()[des_ind_pres_2_conj.values().index(word[-2:])] 
+			print "The verb is %s. It is a %s." % (word, ending_definition)
 			return True
 		elif word[-3:] in des_ind_pres_2_conj.values():
-			ending = des_ind_pres_2_conj.keys()[des_ind_pres_2_conj.values().index(word[-3:])] 
-			print "The verb is %s. It is a %s." % (word, ending)
+			ending_definition = des_ind_pres_2_conj.keys()[des_ind_pres_2_conj.values().index(word[-3:])] 
+			print "The verb is %s. It is a %s." % (word, ending_definition)
 			return True
 		elif word[-4:] in des_ind_pres_2_conj.values():
-			ending = des_ind_pres_2_conj.keys()[des_ind_pres_2_conj.values().index(word[-4:])] 
-			print "The verb is %s. It is a %s." % (word, ending)
+			ending_definition = des_ind_pres_2_conj.keys()[des_ind_pres_2_conj.values().index(word[-4:])] 
+			print "The verb is %s. It is a %s." % (word, ending_definition)
 			return True
 
 def find_verb_4_conj_ind_pres(splitted_sentence):
 	global des_ind_pres_4_conj
 	for word in splitted_sentence:
 		if 	word[-2:] in des_ind_pres_4_conj.values():
-			ending = des_ind_pres_4_conj.keys()[des_ind_pres_4_conj.values().index(word[-2:])] 
-			print "The verb is %s. It is a %s, 4th conj" % (word, ending)
+			ending_definition = des_ind_pres_4_conj.keys()[des_ind_pres_4_conj.values().index(word[-2:])] 
+			print "The verb is %s. It is a %s, 4th conj" % (word, ending_definition)
 			return True
 		elif word[-3:] in des_ind_pres_4_conj.values():
-			ending = des_ind_pres_4th_conj.keys()[des_ind_pres_4_conj.values().index(word[-3:])] 
-			print "The verb is %s. It is a %s." % (word, ending)
+			ending_definition = des_ind_pres_4th_conj.keys()[des_ind_pres_4_conj.values().index(word[-3:])] 
+			print "The verb is %s. It is a %s." % (word, ending_definition)
 			return True
 		elif word[-4:] in des_ind_pres_4_conj.values():
-			ending = des_ind_pres_4th_conj.keys()[des_ind_pres_4_conj.values().index(word[-4:])] 
-			print "The verb is %s. It is a %s." % (word, ending)
+			ending_definition = des_ind_pres_4th_conj.keys()[des_ind_pres_4_conj.values().index(word[-4:])] 
+			print "The verb is %s. It is a %s." % (word, ending_definition)
 			return True	
 
 def find_subject(splitted_sentence):
@@ -69,26 +70,27 @@ def find_subject(splitted_sentence):
 	for word in splitted_sentence:
 		if word[-1] == "a" or word[-1] == "i" or word[-2:] in des_subst_nominat.values():
 			print "The subject is %s." % (word)
-			return
+			return True
 	print "There is no subject."
-	return None
+	return False
 
 def find_object(splitted_sentence):
 	for word in splitted_sentence:
 		if word[-2:] in des_subst_accusat.values():
 			print "The object is %s." % (word)
-			return
+			return True
 	print "There is no object."
-	return None
+	return False
 
-#def analyze_word():
-	# if word_to_analyze[-1] == "a" or word_to_analyze[-2:] in des_subst_nominat_sg.values():
-	# 	print "%s is a noun. Nom. Sg." % (word_to_analyze)
-	# elif word_to_analyze[-2:] in des_subst_accusat_sg.values():
-	# 	print "%s is a noun. Acc. Sg." % (word_to_analyze)
-	# elif word_to_analyze[-2:] in des_pres_ind_1_conj.values():
-	# 	print "%s is a verb. Pres. Ind." % (word_to_analyze)
-	# #print more info, then use this to make other functions better, adding details
+# def analyze_word(word_to_analyze):
+# 	word_to_analyze = raw_input("Please, type the word you want to analyze")
+# 	if find_verb(word_to_analyze) != False:
+# 		print "%s is a verb" % (word_to_analyze)
+# 	elif find_subject(word_to_analyze) != False:
+# 		print find_subject(word_to_analyze)
+# 	elif find_object(word_to_analyze) != False:
+# 		print find_object(word_to_analyze)
+
 
 def analyze_sentence(splitted_sentence):
 	find_verb(splitted_sentence)

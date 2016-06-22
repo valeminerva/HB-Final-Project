@@ -3,16 +3,21 @@
 from ProjectHB_dictionaries import *
 
 def sentence():
+	"""Splits sentence word by word"""
+
 	user_sentence = raw_input("Please type the sentence you want to analyze.")
 	splitted_sentence = user_sentence.split()
 	return splitted_sentence
 
+#DEF VERB
 def find_verb(splitted_sentence):
+	"""Checks if there is a verb of any conj"""
 	if find_verb_1st_conj_ind_pres(splitted_sentence) != True and find_verb_2nd_conj_ind_pres(splitted_sentence) != True and find_verb_4_conj_ind_pres(splitted_sentence) != True:
 		print "There is no verb."
 		return False
 
 def find_verb_1st_conj_ind_pres(splitted_sentence):
+	"""Checks if there is a verb of 1st conj"""
 	global des_ind_pres_1_conj
 	for word in splitted_sentence:
 		if word[-1] in des_ind_pres_1_conj.values() and word[-2:] != "eo" and word[-2:] != "io":
@@ -33,6 +38,7 @@ def find_verb_1st_conj_ind_pres(splitted_sentence):
 			return True
 
 def find_verb_2nd_conj_ind_pres(splitted_sentence):
+	"""Checks if there is a verb of 2st conj"""
 	global des_ind_pres_2_conj
 	for word in splitted_sentence:
 		if 	word[-2:] in des_ind_pres_2_conj.values():
@@ -49,6 +55,7 @@ def find_verb_2nd_conj_ind_pres(splitted_sentence):
 			return True
 
 def find_verb_4_conj_ind_pres(splitted_sentence):
+	"""Checks if there is a verb of 4st conj"""
 	global des_ind_pres_4_conj
 	for word in splitted_sentence:
 		if 	word[-2:] in des_ind_pres_4_conj.values():
@@ -64,11 +71,12 @@ def find_verb_4_conj_ind_pres(splitted_sentence):
 			print "The verb is %s. It is a %s." % (word, ending_definition)
 			return True	
 
+#DEF SUBJECT
 def find_verb_plural(splitted_sentence):
+	"""Checks if there is any verb in pl"""
 	for word in splitted_sentence:
 		if word[-3:] == "mus" or word[-3] == "tis" or word[-2:] == "nt":
 			pl_verb = word
-			#print pl_verb
 			return pl_verb
 
 def find_subject(splitted_sentence):
@@ -83,13 +91,9 @@ def find_subject(splitted_sentence):
 				subject1 = word
 				idx = splitted_sentence.index(subject1)+1
 				for possible_second_subject in splitted_sentence[idx:]:
-					if possible_second_subject[-1] in des_subst_nominat_pl.values() or possible_second_subject[-2:] in des_subst_nominat_pl.values():
+					if possible_second_subject[-1] in des_subst_nominat_sg.values() or possible_second_subject[-2:] in des_subst_nominat_sg.values() or possible_second_subject[-1] in des_subst_nominat_pl.values() or possible_second_subject[-2:] in des_subst_nominat_pl.values():
 						subject2 = possible_second_subject
-						print "There are 2 pl. subjects: %s and %s." % (subject1, subject2)
-						return
-					elif possible_second_subject[-1] in des_subst_nominat_sg.values() or possible_second_subject[-2:] in des_subst_nominat_sg.values():
-						subject2 = possible_second_subject
-						print "There are 2 subjects: %s and %s" % (subject1, subject2)
+						print "There are 2 subjects: %s and %s." % (subject1, subject2)
 						return
 			elif word[-1] in des_subst_nominat_sg.values() or word[-2:] in des_subst_nominat_sg.values():
 				subject1 = word
@@ -113,6 +117,9 @@ def find_subject(splitted_sentence):
 	print "There is no subject."
 	return False
 
+# Marcus Paulus amant Claudias: Claudias corrisponde alla desinenza di prima coniugazione presente per es amas
+
+#DEF OBJECT
 def find_object(splitted_sentence):
 	for word in splitted_sentence:
 		if word[-2:] in des_subst_accusat.values():

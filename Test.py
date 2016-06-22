@@ -93,13 +93,9 @@ def find_subject(splitted_sentence):
 				subject1 = word
 				idx = splitted_sentence.index(subject1)+1
 				for possible_second_subject in splitted_sentence[idx:]:
-					if possible_second_subject[-1] in des_subst_nominat_pl.values() or possible_second_subject[-2:] in des_subst_nominat_pl.values():
+					if possible_second_subject[-1] in des_subst_nominat_sg.values() or possible_second_subject[-2:] in des_subst_nominat_sg.values() or possible_second_subject[-1] in des_subst_nominat_pl.values() or possible_second_subject[-2:] in des_subst_nominat_pl.values():
 						subject2 = possible_second_subject
 						print "There are 2 pl. subjects: %s and %s." % (subject1, subject2)
-						return
-					elif possible_second_subject[-1] in des_subst_nominat_sg.values() or possible_second_subject[-2:] in des_subst_nominat_sg.values():
-						subject2 = possible_second_subject
-						print "There are 2 subjects: %s and %s" % (subject1, subject2)
 						return
 			elif word[-1] in des_subst_nominat_sg.values() or word[-2:] in des_subst_nominat_sg.values():
 				subject1 = word
@@ -122,6 +118,8 @@ def find_subject(splitted_sentence):
 		
 	print "There is no subject."
 	return False
+
+# Marcus Paulus amant Claudias: Claudias corrisponde alla desinenza di prima coniugazione presente per es amas
 
 def find_object(splitted_sentence):
 	for word in splitted_sentence:

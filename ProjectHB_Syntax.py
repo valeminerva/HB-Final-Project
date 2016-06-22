@@ -64,13 +64,52 @@ def find_verb_4_conj_ind_pres(splitted_sentence):
 			print "The verb is %s. It is a %s." % (word, ending_definition)
 			return True	
 
+def find_verb_plural(splitted_sentence):
+	for word in splitted_sentence:
+		if word[-3:] == "mus" or word[-3] == "tis" or word[-2:] == "nt":
+			pl_verb = word
+			#print pl_verb
+			return pl_verb
+
 def find_subject(splitted_sentence):
 	global des_subst_first_decl
 	global des_subst_second_decl
-	for word in splitted_sentence:
-		if word[-1] == "a" or word[-1] == "i" or word[-2:] in des_subst_nominat.values():
-			print "The subject is %s." % (word)
-			return True
+	idx = None
+
+	if find_verb_plural(splitted_sentence) != None:
+		for word in splitted_sentence:
+
+			if word[-1] in des_subst_nominat_pl.values() or word[-2:] in des_subst_nominat_pl.values():
+				subject1 = word
+				idx = splitted_sentence.index(subject1)+1
+				for possible_second_subject in splitted_sentence[idx:]:
+					if possible_second_subject[-1] in des_subst_nominat_pl.values() or possible_second_subject[-2:] in des_subst_nominat_pl.values():
+						subject2 = possible_second_subject
+						print "There are 2 pl. subjects: %s and %s." % (subject1, subject2)
+						return
+					elif possible_second_subject[-1] in des_subst_nominat_sg.values() or possible_second_subject[-2:] in des_subst_nominat_sg.values():
+						subject2 = possible_second_subject
+						print "There are 2 subjects: %s and %s" % (subject1, subject2)
+						return
+			elif word[-1] in des_subst_nominat_sg.values() or word[-2:] in des_subst_nominat_sg.values():
+				subject1 = word
+				idx = splitted_sentence.index(subject1)+1
+				for possible_second_subject in splitted_sentence[idx:]:
+					if possible_second_subject[-1] in des_subst_nominat_sg.values() or possible_second_subject[-2:] in des_subst_nominat_sg.values() or possible_second_subject[-1] in des_subst_nominat_pl.values() or possible_second_subject[-2:] in des_subst_nominat_pl.values():
+						subject2 = possible_second_subject
+						print "There are 2 subjects: %s and %s." % (subject1, subject2)
+						return True
+			else: 
+				print "Subject is %s" % (subject1)
+				return
+	
+	
+	elif find_verb_plural(splitted_sentence) == None:
+		for word in splitted_sentence:
+			if word[-1] in des_subst_nominat_sg.values() or word[-2:] in des_subst_nominat_sg.values():
+				print "The subject is %s" % (word)
+				return 
+		
 	print "There is no subject."
 	return False
 

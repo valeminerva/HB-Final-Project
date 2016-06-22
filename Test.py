@@ -101,14 +101,14 @@ def find_subject(splitted_sentence):
 						subject2 = possible_second_subject
 						print "There are 2 subjects: %s and %s" % (subject1, subject2)
 						return
-					elif word[-1] in des_subst_nominat_sg.values() or word[-2:] in des_subst_nominat_sg.values():
-						subject1 = word
-						idx = splitted_sentence.index(subject1)+1
-						for possible_second_subject in splitted_sentence[idx:]:
-							if possible_second_subject[-1] in des_subst_nominat_sg.values() or possible_second_subject[-2:] in des_subst_nominat_sg.values() or possible_second_subject[-1] in des_subst_nominat_pl.values() or possible_second_subject[-2:] in des_subst_nominat_pl.values():
-								subject2 = possible_second_subject
-								print "There are 2 subjects: %s and %s." % (subject1, possible_second_subject)
-								return True
+			elif word[-1] in des_subst_nominat_sg.values() or word[-2:] in des_subst_nominat_sg.values():
+				subject1 = word
+				idx = splitted_sentence.index(subject1)+1
+				for possible_second_subject in splitted_sentence[idx:]:
+					if possible_second_subject[-1] in des_subst_nominat_sg.values() or possible_second_subject[-2:] in des_subst_nominat_sg.values() or possible_second_subject[-1] in des_subst_nominat_pl.values() or possible_second_subject[-2:] in des_subst_nominat_pl.values():
+						subject2 = possible_second_subject
+						print "There are 2 subjects: %s and %s." % (subject1, subject2)
+						return True
 			else: 
 				print "Subject is %s" % (subject1)
 				return
